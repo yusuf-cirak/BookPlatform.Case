@@ -10,8 +10,6 @@ public sealed class BookPlatformDbContext(DbContextOptions<BookPlatformDbContext
 {
     public DbSet<Book> Books { get; set; }
 
-    public DbSet<ShelfLocation> ShelfLocations { get; set; }
-
     public DbSet<UserFriend> UserFriends { get; set; }
 
     public DbSet<BookNote> BookNotes { get; set; }

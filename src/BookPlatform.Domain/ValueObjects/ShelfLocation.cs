@@ -1,6 +1,6 @@
-﻿namespace BookPlatform.Domain;
+﻿namespace BookPlatform.Domain.ValueObjects;
 
-public sealed class ShelfLocation : AuditEntity
+public sealed record ShelfLocation
 {
     public required string Room { get; set; }
 
@@ -9,8 +9,6 @@ public sealed class ShelfLocation : AuditEntity
     public required string Shelf { get; set; }
 
     public required string Position { get; set; }
-
-    public ICollection<Book> Books { get; set; } = new HashSet<Book>();
 
     public static ShelfLocation Create(string room, string section, string shelf, string position)
     {

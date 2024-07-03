@@ -1,4 +1,6 @@
-﻿namespace BookPlatform.Domain;
+﻿using BookPlatform.Domain.Enums;
+
+namespace BookPlatform.Domain;
 
 public class BookNote : AuditEntity
 {
@@ -42,9 +44,3 @@ public class BookNote : AuditEntity
     }
 }
 
-public enum ShareType
-{
-    Public,
-    OnlyFriends,
-    Private
-}

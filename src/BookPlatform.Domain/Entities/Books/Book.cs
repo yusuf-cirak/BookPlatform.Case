@@ -1,4 +1,6 @@
-﻿namespace BookPlatform.Domain;
+﻿using BookPlatform.Domain.ValueObjects;
+
+namespace BookPlatform.Domain;
 
 public class Book : AuditEntity
 {
