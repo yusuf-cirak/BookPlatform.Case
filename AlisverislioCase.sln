@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EC8EE322-E649-4DF6-8811-9A8C5A0067EF}"
+	ProjectSection(SolutionItems) = preProject
+		src\Dockerfile = src\Dockerfile
+		src\docker-compose.yaml = src\docker-compose.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookPlatform.WebAPI", "src\BookPlatform.WebAPI\BookPlatform.WebAPI.csproj", "{136D4C2F-8198-4BCE-B587-436C824B152E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{368A03A0-FB33-416C-936C-BC05C2535223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookPlatform.SharedKernel", "src\BookPlatform.SharedKernel\BookPlatform.SharedKernel.csproj", "{301519A1-30DC-40A0-B6CB-7500A7A784D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookPlatform.Domain", "src\BookPlatform.Domain\BookPlatform.Domain.csproj", "{EB00A8B2-C04C-4E0D-B3DA-BF3EB8E41FD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookPlatform.Infrastructure", "src\BookPlatform.Infrastructure\BookPlatform.Infrastructure.csproj", "{44FBBEAC-E7AC-41C8-9CAA-4A0EA651D2A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{136D4C2F-8198-4BCE-B587-436C824B152E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136D4C2F-8198-4BCE-B587-436C824B152E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136D4C2F-8198-4BCE-B587-436C824B152E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136D4C2F-8198-4BCE-B587-436C824B152E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{301519A1-30DC-40A0-B6CB-7500A7A784D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301519A1-30DC-40A0-B6CB-7500A7A784D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{301519A1-30DC-40A0-B6CB-7500A7A784D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301519A1-30DC-40A0-B6CB-7500A7A784D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB00A8B2-C04C-4E0D-B3DA-BF3EB8E41FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB00A8B2-C04C-4E0D-B3DA-BF3EB8E41FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB00A8B2-C04C-4E0D-B3DA-BF3EB8E41FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB00A8B2-C04C-4E0D-B3DA-BF3EB8E41FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44FBBEAC-E7AC-41C8-9CAA-4A0EA651D2A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44FBBEAC-E7AC-41C8-9CAA-4A0EA651D2A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44FBBEAC-E7AC-41C8-9CAA-4A0EA651D2A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44FBBEAC-E7AC-41C8-9CAA-4A0EA651D2A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{136D4C2F-8198-4BCE-B587-436C824B152E} = {EC8EE322-E649-4DF6-8811-9A8C5A0067EF}
+		{301519A1-30DC-40A0-B6CB-7500A7A784D8} = {EC8EE322-E649-4DF6-8811-9A8C5A0067EF}
+		{EB00A8B2-C04C-4E0D-B3DA-BF3EB8E41FD3} = {EC8EE322-E649-4DF6-8811-9A8C5A0067EF}
+		{44FBBEAC-E7AC-41C8-9CAA-4A0EA651D2A1} = {EC8EE322-E649-4DF6-8811-9A8C5A0067EF}
+	EndGlobalSection
+EndGlobal
