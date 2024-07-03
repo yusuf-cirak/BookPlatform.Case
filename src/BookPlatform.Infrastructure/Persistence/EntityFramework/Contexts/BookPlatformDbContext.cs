@@ -8,8 +8,6 @@ namespace BookPlatform.Infrastructure.Persistence.EntityFramework.Contexts;
 public sealed class BookPlatformDbContext(DbContextOptions<BookPlatformDbContext> options)
     : IdentityDbContext<User>(options)
 {
-    public DbSet<User> Users { get; set; }
-
     public DbSet<Book> Books { get; set; }
 
     public DbSet<ShelfLocation> ShelfLocations { get; set; }

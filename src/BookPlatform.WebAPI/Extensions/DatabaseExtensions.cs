@@ -1,7 +1,5 @@
-﻿using BookPlatform.Domain;
-using BookPlatform.Infrastructure.Persistence.EntityFramework.Contexts;
+﻿using BookPlatform.Infrastructure.Persistence.EntityFramework.Contexts;
 using BookPlatform.Infrastructure.Persistence.EntityFramework.Interceptors;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookPlatform.WebAPI.Extensions;
@@ -11,10 +9,6 @@ public static class DatabaseExtensions
     public static void AddDatabaseServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddSingleton<AuditableEntityDateInterceptor>();
-
-        services.AddIdentityCore<User>()
-            .AddEntityFrameworkStores<BookPlatformDbContext>()
-            .AddApiEndpoints();
 
         services.AddDbContextPool<BookPlatformDbContext>((sp, opt) =>
         {
