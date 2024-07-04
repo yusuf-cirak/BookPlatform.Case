@@ -5,6 +5,7 @@ using BookPlatform.Infrastructure.Persistence.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,9 +13,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookPlatform.Infrastructure.Persistence.EntityFramework.Migrations
 {
     [DbContext(typeof(BookPlatformDbContext))]
-    partial class BookPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240704151205_PictureUrl_and_FullTextSearch_Books")]
+    partial class PictureUrl_and_FullTextSearch_Books
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

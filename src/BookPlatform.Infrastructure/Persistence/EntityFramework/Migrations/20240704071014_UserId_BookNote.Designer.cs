@@ -5,6 +5,7 @@ using BookPlatform.Infrastructure.Persistence.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,9 +13,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookPlatform.Infrastructure.Persistence.EntityFramework.Migrations
 {
     [DbContext(typeof(BookPlatformDbContext))]
-    partial class BookPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240704071014_UserId_BookNote")]
+    partial class UserId_BookNote
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,10 +54,6 @@ namespace BookPlatform.Infrastructure.Persistence.EntityFramework.Migrations
 
                     b.Property<int>("Pages")
                         .HasColumnType("int");
-
-                    b.Property<string>("PictureUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PublishedDate")
                         .HasColumnType("datetime2");

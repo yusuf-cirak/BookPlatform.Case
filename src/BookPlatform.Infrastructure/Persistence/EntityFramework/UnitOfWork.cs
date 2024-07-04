@@ -1,4 +1,5 @@
 ﻿using BookPlatform.Infrastructure.Persistence.EntityFramework.Contexts;
+using BookPlatform.SharedKernel.Abstractions;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace BookPlatform.Infrastructure.Persistence.EntityFramework;
@@ -19,11 +20,11 @@ public interface IUnitOfWork
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
 
-public sealed class UnitOfWork(BookPlatformDbContext context) : IUnitOfWork
+public sealed class UnitOfWork(BookPlatformDbContext context) : IUnitOfWork, IScopedService
 {
     public IDbContextTransaction BeginTransaction()
     {
-       return context.Database.BeginTransaction();
+        return context.Database.BeginTransaction();
     }
 
     public Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)

@@ -1,18 +1,26 @@
-﻿using BookPlatform.SharedKernel.Entities;
+﻿using BookPlatform.Domain;
+using BookPlatform.Infrastructure.Persistence.EntityFramework.Contexts;
+using BookPlatform.SharedKernel.Abstractions;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookPlatform.Infrastructure.Persistence.EntityFramework;
 
-public interface IRepository<T> where T : Entity
+public interface IEfRepository
 {
-    DbSet<T> Set();
+    DbSet<User> Users { get; }
+    DbSet<Book> Books { get; }
+    DbSet<BookNote> BookNotes { get; }
+    
+    DbSet<UserFriend> UserFriends { get; }
+
 }
 
-public sealed class EfRepository<TDbContext>(TDbContext context)
-    where TDbContext : DbContext
+public sealed class EfRepository(BookPlatformDbContext context) : IEfRepository, IScopedService
 {
-    public DbSet<T> Set<T>() where T : Entity
-    {
-        return context.Set<T>();
-    }
+    public DbSet<User> Users { get; } = context.Set<User>();
+    public DbSet<Book> Books { get; } = context.Set<Book>();
+    public DbSet<BookNote> BookNotes { get; } = context.Set<BookNote>();
+    
+    public DbSet<UserFriend> UserFriends { get; } = context.Set<UserFriend>();
 }
