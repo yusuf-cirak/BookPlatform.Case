@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BookPlatform.Application.Contracts\BookPlatform.Application.Contracts.csproj" />
       <ProjectReference Include="..\BookPlatform.Domain\BookPlatform.Domain.csproj" />
     </ItemGroup>
 

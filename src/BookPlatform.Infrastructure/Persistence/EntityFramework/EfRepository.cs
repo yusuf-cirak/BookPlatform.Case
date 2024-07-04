@@ -1,7 +1,6 @@
 ﻿using BookPlatform.Domain;
 using BookPlatform.Infrastructure.Persistence.EntityFramework.Contexts;
 using BookPlatform.SharedKernel.Abstractions;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookPlatform.Infrastructure.Persistence.EntityFramework;
