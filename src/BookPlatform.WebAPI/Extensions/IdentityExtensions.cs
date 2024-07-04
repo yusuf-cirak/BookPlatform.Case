@@ -20,7 +20,7 @@ public static class IdentityExtensions
     }
 
 
-    public static void UseIdentityAuth(this IApplicationBuilder app)
+    public static void MapAuthenticationMiddleware(this IApplicationBuilder app)
     {
         app.UseAuthentication();
     }
