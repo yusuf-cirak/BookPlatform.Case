@@ -1,5 +1,6 @@
 ﻿using BookPlatform.Application.Features.Books.Commands.Delete;
 using BookPlatform.Application.Features.UserFriends.Commands;
+using BookPlatform.Application.Features.UserFriends.Commands.Create;
 using BookPlatform.Application.Features.UserFriends.Commands.Delete;
 using BookPlatform.SharedKernel.Extensions;
 using MediatR;
@@ -12,7 +13,7 @@ public static class UserFriendEndpoints
 {
     public static void MapUserFriendEndpoints(this IEndpointRouteBuilder builder)
     {
-        var groupBuilder = builder.MapGroup("/user-friends")
+        var groupBuilder = builder.MapGroup("_api/user-friends")
             .WithTags("UserFriends");
         
         groupBuilder.MapPost("/",

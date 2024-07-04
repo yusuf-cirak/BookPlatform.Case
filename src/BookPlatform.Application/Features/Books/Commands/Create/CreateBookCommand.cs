@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace BookPlatform.Application.Features.Books.Commands.Create;
 
-public sealed record CreateBookCommandRequest : IRequest<Result<GetBookDto>>, ISecuredRequest
+public sealed class CreateBookCommandRequest : IRequest<Result<GetBookDto>>, ISecuredRequest
 {
     public string Title { get; set; }
     public string Author { get; set; }

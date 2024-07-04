@@ -10,6 +10,19 @@ public static class IdentityExtensions
     {
         services.AddAuthentication()
             .AddBearerToken(IdentityConstants.BearerScheme);
+        // .AddJwtBearer(options =>
+        // {
+        //     options.TokenValidationParameters = new TokenValidationParameters
+        //     {
+        //         ValidateIssuer = true,
+        //         ValidateAudience = true,
+        //         ValidateLifetime = true,
+        //         ValidateIssuerSigningKey = true,
+        //         ValidIssuer = configuration["TokenOptions:Issuer"],
+        //         ValidAudience = configuration["TokenOptions:Audience"],
+        //         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["TokenOptions:SecurityKey"]!))
+        //     };
+        // });
     }
 
     public static void AddIdentityEndpoints(this IServiceCollection services)

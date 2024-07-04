@@ -11,7 +11,12 @@ public sealed class DtoProfiles : Profile
         CreateMap<CreateBookCommandRequest, CreateBookNoteDto>();
         CreateMap<CreateBookNoteDto, BookNote>();
 
-        CreateMap<BookNote, GetBookNoteDto>().ReverseMap();
+        CreateMap<BookNote, GetBookNoteDto>()
+            .ForMember(s=>s.BookNoteId, opt=>opt.MapFrom(d=>d.Id))
+            .ForMember(s=>s.BookId, opt=>opt.MapFrom(d=>d.BookId))
+            .ForMember(s=>s.Note, opt=>opt.MapFrom(d=>d.Note))
+            .ForMember(s=>s.ShareType, opt=>opt.MapFrom(d=>d.ShareType))
+            .ReverseMap();
 
         CreateMap<UpdateBookNoteDto, BookNote>();
     }

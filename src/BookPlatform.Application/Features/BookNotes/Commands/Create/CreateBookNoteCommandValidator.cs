@@ -17,7 +17,6 @@ public sealed class CreateBookNoteCommandValidator : AbstractValidator<CreateBoo
             .WithMessage("{PropertyName} must not exceed 500 characters.");
 
         RuleFor(x => x.ShareType)
-            .NotEmpty()
             .IsInEnum()
             .WithMessage("{PropertyName} must be a valid ShareType.");
     }

@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using BookPlatform.Application.Features.UserFriends.Commands.Create;
+using FluentValidation;
 
 namespace BookPlatform.Application.Features.UserFriends.Commands;
 

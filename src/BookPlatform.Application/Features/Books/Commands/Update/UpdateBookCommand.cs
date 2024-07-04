@@ -1,5 +1,6 @@
 ﻿using BookPlatform.Application.Common.Abstractions;
 using BookPlatform.Application.Common.Services;
+using BookPlatform.Application.Features.BookNotes.Rules;
 using BookPlatform.Application.Features.Books.Dtos;
 using BookPlatform.Application.Features.Books.Services;
 using BookPlatform.Domain;
@@ -38,7 +39,7 @@ public sealed class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand
     {
         var mapper = _baseService.Mapper;
         var uow = _baseService.UnitOfWork;
-
+        
         var book = await _bookService.UpdateBookAsync(mapper.Map<UpdateBookDto>(request), cancellationToken);
 
         var result = await uow.SaveChangesAsync(cancellationToken) > 0;

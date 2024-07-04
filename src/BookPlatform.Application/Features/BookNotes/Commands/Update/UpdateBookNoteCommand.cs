@@ -40,7 +40,12 @@ public sealed class UpdateBookNoteCommandHandler : IRequestHandler<UpdateBookNot
             return bookNoteResult.Error;
         }
 
-        var updateBookNoteDto = new UpdateBookNoteDto(request.BookNoteId, request.Note, request.ShareType);
+        var updateBookNoteDto = new UpdateBookNoteDto
+        {
+            BookNoteId = request.BookNoteId,
+            Note = request.Note,
+            ShareType = request.ShareType
+        };
 
         var result = await _bookNoteService.UpdateBookNoteAsync(updateBookNoteDto, cancellationToken) > 0;
 

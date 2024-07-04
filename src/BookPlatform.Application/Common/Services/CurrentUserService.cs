@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using BookPlatform.SharedKernel.Abstractions;
 using Microsoft.AspNetCore.Http;
 
 namespace BookPlatform.Application.Common.Services;

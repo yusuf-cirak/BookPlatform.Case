@@ -12,7 +12,7 @@ public static class BookNoteEndpoints
 {
     public static void MapBookNoteEndpoints(this IEndpointRouteBuilder builder)
     {
-        var groupBuilder = builder.MapGroup("/book-notes")
+        var groupBuilder = builder.MapGroup("_api/book-notes")
             .WithTags("BookNotes");
 
         groupBuilder.MapGet("/{id}",

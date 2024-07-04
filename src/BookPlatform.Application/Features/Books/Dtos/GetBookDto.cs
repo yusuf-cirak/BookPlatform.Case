@@ -13,4 +13,5 @@ public sealed record GetBookDto
     public DateTime PublishedDate { get; set; }
     public string Description { get; set; }
     public ShelfLocation ShelfLocation { get; set; }
+    public string Picture { get; set; }
 }

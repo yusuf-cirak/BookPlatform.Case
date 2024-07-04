@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGenServices();
+
+builder.Services.AddControllers();
 
 builder.AddSerilogLogging();
 
@@ -14,14 +17,16 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 
 builder.Services.AddApplicationServices();
 
-builder.Services.AddIdentityAuthentication(builder.Configuration);
+// builder.Services.AddIdentityAuthentication(builder.Configuration);
 
-builder.Services.AddIdentityEndpoints();
+// builder.Services.AddIdentityEndpoints();
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandlerMiddleware>();
 builder.Services.AddProblemDetails();
 
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddJwtAuthenticationServices(builder.Configuration);
 
 
 var app = builder.Build();
@@ -39,7 +44,7 @@ app.UseExceptionHandler();
 
 app.MapAuthenticationMiddleware();
 
-app.MapIdentityEndpoints();
+// app.MapIdentityEndpoints();
 app.MapApiEndpoints();
 
 app.ApplyPendingMigrations();

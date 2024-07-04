@@ -13,7 +13,7 @@ public static class BookEndpoints
 {
     public static void MapBookEndpoints(this IEndpointRouteBuilder builder)
     {
-        var groupBuilder = builder.MapGroup("/books")
+        var groupBuilder = builder.MapGroup("_api/books")
             .WithTags("Books");
 
 
@@ -26,12 +26,15 @@ public static class BookEndpoints
             (await mediator.Send(new GetBooksByFilterQueryRequest(filter))));
 
         groupBuilder.MapPost("/",
-            async ([FromForm] CreateBookCommandRequest createBookCommandRequest, IMediator mediator) =>
-            (await mediator.Send(createBookCommandRequest)).ToHttpResponse(201));
+                async ([FromForm(Name = "book")] CreateBookCommandRequest createBookCommandRequest, [FromForm] IFormFile? picture,
+                        IMediator mediator) =>
+                    (await mediator.Send(createBookCommandRequest)).ToHttpResponse(201))
+            .DisableAntiforgery();
 
         groupBuilder.MapPut("/",
-            async ([FromForm] UpdateBookCommandRequest updateBookCommandRequest, IMediator mediator) =>
-            (await mediator.Send(updateBookCommandRequest)).ToHttpResponse(200));
+                async ([FromForm] UpdateBookCommandRequest updateBookCommandRequest, IMediator mediator) =>
+                (await mediator.Send(updateBookCommandRequest)).ToHttpResponse(200))
+            .DisableAntiforgery();
 
         groupBuilder.MapDelete("/{id}",
             async ([FromRoute] string id, IMediator mediator) =>

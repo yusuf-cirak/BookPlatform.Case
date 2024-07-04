@@ -4,7 +4,7 @@ using BookPlatform.Application.Features.UserFriends.Services;
 using BookPlatform.Domain;
 using MediatR;
 
-namespace BookPlatform.Application.Features.UserFriends.Commands;
+namespace BookPlatform.Application.Features.UserFriends.Commands.Create;
 
 public sealed record CreateUserFriendCommandRequest(string UserId) : IRequest<Result>, ISecuredRequest;
 
@@ -25,7 +25,7 @@ public sealed class CreateUserFriendCommandHandler : IRequestHandler<CreateUserF
 
         var userFriendRes = _userFriendService.CreateUserFriend(currentUserId, request.UserId);
 
-        if (userFriendRes.IsSuccess)
+        if (userFriendRes.IsFailure)
         {
             return userFriendRes.Error;
         }
