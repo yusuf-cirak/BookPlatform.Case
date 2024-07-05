@@ -28,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BookPlatform.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookPlatform.Infrastructure.UnitTests", "test\BookPlatform.Infrastructure\BookPlatform.Infrastructure.UnitTests\BookPlatform.Infrastructure.UnitTests.csproj", "{7D564804-40DD-4097-A4A6-14B02BFB73A9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BookPlatform.WebAPI", "BookPlatform.WebAPI", "{929E782E-426D-44BA-8D07-3D64A2638850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookPlatform.WebAPI.IntegrationTests", "test\BookPlatform.WebAPI.IntegrationTests\BookPlatform.WebAPI.IntegrationTests.csproj", "{19E03118-E5C4-4644-BB85-EFD2C08624EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +70,10 @@ Global
 		{7D564804-40DD-4097-A4A6-14B02BFB73A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D564804-40DD-4097-A4A6-14B02BFB73A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D564804-40DD-4097-A4A6-14B02BFB73A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E03118-E5C4-4644-BB85-EFD2C08624EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E03118-E5C4-4644-BB85-EFD2C08624EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E03118-E5C4-4644-BB85-EFD2C08624EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E03118-E5C4-4644-BB85-EFD2C08624EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{136D4C2F-8198-4BCE-B587-436C824B152E} = {EC8EE322-E649-4DF6-8811-9A8C5A0067EF}
@@ -78,5 +86,7 @@ Global
 		{43BC6932-22EB-413A-A7AD-1E6DDFB906DA} = {A0B227FD-3023-4E5A-8B1E-2B53B5DD53A6}
 		{21BCB476-CE71-4788-93F9-6D21A19E0A4F} = {368A03A0-FB33-416C-936C-BC05C2535223}
 		{7D564804-40DD-4097-A4A6-14B02BFB73A9} = {21BCB476-CE71-4788-93F9-6D21A19E0A4F}
+		{929E782E-426D-44BA-8D07-3D64A2638850} = {368A03A0-FB33-416C-936C-BC05C2535223}
+		{19E03118-E5C4-4644-BB85-EFD2C08624EE} = {929E782E-426D-44BA-8D07-3D64A2638850}
 	EndGlobalSection
 EndGlobal
