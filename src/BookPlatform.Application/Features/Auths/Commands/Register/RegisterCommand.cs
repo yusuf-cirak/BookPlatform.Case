@@ -13,16 +13,14 @@ public readonly record struct RegisterCommandRequest(string Username, string Pas
 public sealed class
     RegisterUserCommandHandler : IRequestHandler<RegisterCommandRequest, Result<AuthResponseDto>>
 {
-    private readonly IEfRepository _efRepository;
     private readonly AuthBusinessRules _authBusinessRules;
     private readonly IAuthService _authService;
     private readonly BaseService _baseService;
 
-    public RegisterUserCommandHandler(AuthBusinessRules authBusinessRules, IEfRepository efRepository,
+    public RegisterUserCommandHandler(AuthBusinessRules authBusinessRules,
         IAuthService authService, BaseService baseService)
     {
         _authBusinessRules = authBusinessRules;
-        _efRepository = efRepository;
         _authService = authService;
         _baseService = baseService;
     }

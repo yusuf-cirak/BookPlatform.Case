@@ -10,24 +10,23 @@ namespace BookPlatform.Infrastructure.Helpers.JWT;
 
 public static class JwtHelper
 {
-    private static IConfigurationRoot Configuration { get; }
+    internal static IConfigurationRoot Configuration { get; set; }
 
-    private static TokenOptions TokenOptions { get; }
-    
-    private static DateTime _accessTokenExpiration;
+    internal static TokenOptions TokenOptions { get; set; }
+
+    internal static DateTime _accessTokenExpiration;
 
     static JwtHelper()
     {
         Configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
                 optional: true)
             .Build();
-        
+
         TokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>()!;
     }
-
 
 
     public static AccessToken CreateAccessToken(User user, IEnumerable<Claim> claims)
@@ -41,7 +40,7 @@ public static class JwtHelper
         return new AccessToken(token, _accessTokenExpiration);
     }
 
-    private static JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
+    internal static JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
         SigningCredentials signingCredentials, IEnumerable<Claim> additionalClaims)
     {
         JwtSecurityToken jwt = new(
@@ -55,7 +54,7 @@ public static class JwtHelper
         return jwt;
     }
 
-    private static IEnumerable<Claim> SetClaims(User user, IEnumerable<Claim> additionalClaims)
+    internal static IEnumerable<Claim> SetClaims(User user, IEnumerable<Claim> additionalClaims)
     {
         List<Claim> claims =
         [

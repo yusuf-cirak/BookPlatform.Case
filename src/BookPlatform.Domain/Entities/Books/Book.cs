@@ -11,7 +11,7 @@ public class Book : AuditEntity
     public string Genre { get; private set; }
     public DateTime PublishedDate { get; private set; }
     public string Description { get; private set; }
-    public virtual ShelfLocation ShelfLocation { get; private set; }
+    public virtual ShelfLocation ShelfLocation { get; set; }
     public string PictureUrl { get; set; }
 
     public Book(string title, string author, string isbn, int pages, string genre, DateTime publishedDate,
