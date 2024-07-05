@@ -1,12 +1,11 @@
-﻿using BookPlatform.Application.Common.Abstractions;
-using BookPlatform.Application.Common.Services;
+﻿using BookPlatform.Application.Common.Services;
 using BookPlatform.Application.Features.Books.Services;
 using BookPlatform.Domain;
 using MediatR;
 
 namespace BookPlatform.Application.Features.Books.Commands.Delete;
 
-public sealed record DeleteBookCommandRequest(string Id) : IRequest<Result>, ISecuredRequest;
+public sealed record DeleteBookCommandRequest(string Id) : IRequest<Result>;
 
 
 public sealed class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommandRequest, Result>

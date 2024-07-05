@@ -1,3 +1,13 @@
 ﻿namespace BookPlatform.Application.Contracts.Auths;
 
-public sealed record AuthResponseDto(string Token, DateTime Expiration);
+public sealed class AuthResponseDto
+{
+    public string Token { get; set; }
+    public DateTime Expiration { get; set; }
+    
+    public AuthResponseDto(string token, DateTime expiration)
+    {
+        Token = token;
+        Expiration = expiration;
+    }
+}

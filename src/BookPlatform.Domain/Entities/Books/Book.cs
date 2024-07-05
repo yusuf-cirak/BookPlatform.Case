@@ -12,7 +12,21 @@ public class Book : AuditEntity
     public DateTime PublishedDate { get; private set; }
     public string Description { get; private set; }
     public virtual ShelfLocation ShelfLocation { get; set; }
-    public string PictureUrl { get; set; }
+    public string PictureUrl { get; set; } = string.Empty;
+    
+    public Book(string id,string title, string author, string isbn, int pages, string genre, DateTime publishedDate,
+        string description,ShelfLocation shelfLocation)
+    {
+        Id = id;
+        Title = title;
+        Author = author;
+        Isbn = isbn;
+        Pages = pages;
+        Genre = genre;
+        PublishedDate = publishedDate;
+        Description = description;
+        ShelfLocation = shelfLocation;
+    }
 
     public Book(string title, string author, string isbn, int pages, string genre, DateTime publishedDate,
         string description)
@@ -46,6 +60,12 @@ public class Book : AuditEntity
     public void RemoveFromShelf()
     {
         ShelfLocation = null;
+    }
+    
+    public static Book Create(string id,string title, string author, string isbn, int pages, string genre, DateTime publishedDate,
+        string description,ShelfLocation shelfLocation)
+    {
+        return new Book(id,title, author, isbn, pages, genre, publishedDate, description,shelfLocation);
     }
 
     public static Book Create(string title, string author, string isbn, int pages, string genre, DateTime publishedDate,

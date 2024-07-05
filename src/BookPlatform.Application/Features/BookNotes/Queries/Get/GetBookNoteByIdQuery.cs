@@ -1,4 +1,5 @@
-﻿using BookPlatform.Application.Common.Services;
+﻿using System.Security.Claims;
+using BookPlatform.Application.Common.Services;
 using BookPlatform.Application.Features.BookNotes.Dtos;
 using BookPlatform.Application.Features.BookNotes.Rules;
 using BookPlatform.Application.Features.BookNotes.Services;

@@ -8,6 +8,6 @@ public sealed class UnauthorizedExceptionDetails : ProblemDetails
     {
         Title = "Unauthorized";
         Detail = "You are not authorized to access this resource";
-        Status = 400;
+        Status = 401;
     }
 }

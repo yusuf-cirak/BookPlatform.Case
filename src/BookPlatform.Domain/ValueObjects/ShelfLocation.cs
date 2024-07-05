@@ -2,13 +2,18 @@
 
 public sealed record ShelfLocation
 {
-    public required string Room { get; set; }
+    public string Room { get; set; }
 
-    public required string Section { get; set; }
+    public string Section { get; set; }
 
-    public required string Shelf { get; set; }
+    public string Shelf { get; set; }
 
-    public required string Position { get; set; }
+    public string Position { get; set; }
+
+    public ShelfLocation()
+    {
+        
+    }
 
     public static ShelfLocation Create(string room, string section, string shelf, string position)
     {

@@ -12,7 +12,7 @@ namespace BookPlatform.Application.Features.Books.Commands.Update;
 
 public sealed record UpdateBookCommandRequest : IRequest<Result<GetBookDto>>, ISecuredRequest
 {
-    public int Id { get; set; }
+    public string Id { get; set; }
     public string Title { get; set; }
     public string Author { get; set; }
     public string Isbn { get; set; }

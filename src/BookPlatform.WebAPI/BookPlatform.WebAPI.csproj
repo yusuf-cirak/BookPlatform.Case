@@ -30,4 +30,10 @@
       <ProjectReference Include="..\BookPlatform.Infrastructure\BookPlatform.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>BookPlatform.WebAPI.IntegrationTests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
 </Project>

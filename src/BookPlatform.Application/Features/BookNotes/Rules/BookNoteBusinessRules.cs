@@ -28,16 +28,16 @@ public sealed class BookNoteBusinessRules(IBookNoteService bookNoteService) : Ba
 
     public Result CanUserViewBookNote(ClaimsPrincipal user, BookNote bookNote)
     {
-        var userId = user.GetUserId();
+        if (IsBookNoteShareTypePublic(bookNote))
+        {
+            return Result.Success();
+        }
+
+        var userId = user?.GetUserId() ?? string.Empty;
 
         var isOwnerResult = IsUserOwnerOfBookNote(userId, bookNote);
 
         if (isOwnerResult.IsSuccess)
-        {
-            return isOwnerResult;
-        }
-
-        if (IsBookNoteShareTypePublic(bookNote))
         {
             return Result.Success();
         }
@@ -47,14 +47,11 @@ public sealed class BookNoteBusinessRules(IBookNoteService bookNoteService) : Ba
             return BookNoteErrors.IsPrivate;
         }
 
-        if (IsBookNoteShareTypeOnlyFriends(bookNote))
-        {
-            var isFriendOfOwnerResult = IsUserFriendOfOwnerOfBookNote(user, bookNote);
+        var isFriendOfOwnerResult = IsUserFriendOfOwnerOfBookNote(user, bookNote);
 
-            if (isFriendOfOwnerResult.IsFailure)
-            {
-                return isFriendOfOwnerResult;
-            }
+        if (isFriendOfOwnerResult.IsFailure)
+        {
+            return isFriendOfOwnerResult;
         }
 
         return Result.Success();
@@ -89,6 +86,11 @@ public sealed class BookNoteBusinessRules(IBookNoteService bookNoteService) : Ba
 
     public Result IsUserFriendOfOwnerOfBookNote(ClaimsPrincipal user, BookNote bookNote)
     {
+        if (!user.Claims.Any())
+        {
+            return BookNoteErrors.NotVisible;
+        }
+
         var ownerId = bookNote.UserId;
 
         var isFriend = user

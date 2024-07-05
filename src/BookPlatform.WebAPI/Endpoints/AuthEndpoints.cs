@@ -16,7 +16,7 @@ public static class AuthEndpoints
         groupBuilder.MapPost("/register",
                 async (RegisterCommandRequest registerCommandRequest, IMediator mediator) =>
                 {
-                    return (await mediator.Send(registerCommandRequest)).ToHttpResponse(200);
+                    return (await mediator.Send(registerCommandRequest)).ToHttpResponse(201);
                 })
             .WithTags("Auths");
 
@@ -24,7 +24,7 @@ public static class AuthEndpoints
         groupBuilder.MapPost("/login",
                 async (LoginCommandRequest loginCommandRequest, IMediator mediator) =>
                 {
-                    return (await mediator.Send(loginCommandRequest)).ToHttpResponse();
+                    return (await mediator.Send(loginCommandRequest)).ToHttpResponse(200);
                 })
             .WithTags("Auths");
     }

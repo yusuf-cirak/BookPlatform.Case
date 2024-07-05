@@ -22,7 +22,7 @@ public static class JwtHelper
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
-                optional: true)
+                optional: true, reloadOnChange: true)
             .Build();
 
         TokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>()!;
@@ -34,18 +34,18 @@ public static class JwtHelper
         _accessTokenExpiration = DateTime.UtcNow.AddMinutes(TokenOptions.AccessTokenExpiration);
         SecurityKey securityKey = SecurityKeyHelper.CreateSecurityKey(TokenOptions.SecurityKey);
         SigningCredentials signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
-        JwtSecurityToken jwt = CreateJwtSecurityToken(TokenOptions, user, signingCredentials, claims);
+        JwtSecurityToken jwt = CreateJwtSecurityToken(user, signingCredentials, claims);
         JwtSecurityTokenHandler jwtSecurityTokenHandler = new();
         string token = jwtSecurityTokenHandler.WriteToken(jwt);
         return new AccessToken(token, _accessTokenExpiration);
     }
 
-    internal static JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
+    internal static JwtSecurityToken CreateJwtSecurityToken(User user,
         SigningCredentials signingCredentials, IEnumerable<Claim> additionalClaims)
     {
         JwtSecurityToken jwt = new(
-            tokenOptions.Issuer,
-            tokenOptions.Audience,
+            TokenOptions.Issuer,
+            TokenOptions.Audience,
             expires: _accessTokenExpiration,
             notBefore: DateTime.UtcNow,
             signingCredentials: signingCredentials,

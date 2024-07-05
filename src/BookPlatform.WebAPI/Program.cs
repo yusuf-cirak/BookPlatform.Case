@@ -3,51 +3,48 @@ using BookPlatform.Infrastructure;
 using BookPlatform.WebAPI.Extensions;
 using BookPlatform.WebAPI.Infrastructure.Middlewares;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace BookPlatform.WebAPI;
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerGenServices();
+public sealed class Program
+{
+    public static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGenServices();
 
-builder.AddSerilogLogging();
+        builder.Services.AddControllers();
 
-builder.Services.AddInfrastructureServices(builder.Configuration);
+        builder.AddSerilogLogging();
 
-builder.Services.AddApplicationServices();
+        builder.Services.AddInfrastructureServices(builder.Configuration);
 
-// builder.Services.AddIdentityAuthentication(builder.Configuration);
+        builder.Services.AddApplicationServices();
 
-// builder.Services.AddIdentityEndpoints();
+        builder.Services.AddExceptionHandler<GlobalExceptionHandlerMiddleware>();
+        builder.Services.AddProblemDetails();
 
-builder.Services.AddExceptionHandler<GlobalExceptionHandlerMiddleware>();
-builder.Services.AddProblemDetails();
+        builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddHttpContextAccessor();
+        builder.Services.AddJwtAuthenticationServices(builder.Configuration);
 
-builder.Services.AddJwtAuthenticationServices(builder.Configuration);
+        var app = builder.Build();
 
+        app.UseSwagger();
+        app.UseSwaggerUI();
 
-var app = builder.Build();
+        app.UseSerilogLogging();
 
-// Configure the HTTP request pipeline.
+        app.UseExceptionHandler();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+        app.MapAuthenticationMiddleware();
+        app.MapApiEndpoints();
 
-app.UseSerilogLogging();
-
-app.UseExceptionHandler();
-
-// app.UseHttpsRedirection();
-
-app.MapAuthenticationMiddleware();
-
-// app.MapIdentityEndpoints();
-app.MapApiEndpoints();
-
-app.ApplyPendingMigrations();
-// app.ApplyDatabaseInitializers();
-
-app.Run();
+        app.ApplyPendingMigrations();
+        app.AddSeedData();
+        
+        app.Run();
+    }
+}

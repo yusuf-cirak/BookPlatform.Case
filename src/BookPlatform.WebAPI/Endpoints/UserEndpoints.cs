@@ -11,7 +11,7 @@ public static class UserEndpoints
         var groupBuilder = builder.MapGroup("_api/users");
 
 
-        groupBuilder.MapPut("/",
+        groupBuilder.MapPut("/username",
                 async (UpdateUsernameCommandRequest usernameCommandRequest, IMediator mediator) =>
                 {
                     return (await mediator.Send(usernameCommandRequest)).ToHttpResponse();

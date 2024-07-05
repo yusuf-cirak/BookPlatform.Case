@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using BookPlatform.Domain;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookPlatform.Infrastructure.Persistence.EntityFramework.Contexts;
