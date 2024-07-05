@@ -61,7 +61,7 @@ namespace BookPlatform.Infrastructure.UnitTests.Helpers;
             var signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
 
             // Act
-            var jwt = JwtHelper.CreateJwtSecurityToken(JwtHelper.TokenOptions, user, signingCredentials, claims);
+            var jwt = JwtHelper.CreateJwtSecurityToken(user, signingCredentials, claims);
 
             // Assert
             Assert.NotNull(jwt);
